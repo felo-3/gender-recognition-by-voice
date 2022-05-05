@@ -156,17 +156,20 @@ def extract_feature(file_name, **kwargs):
         result = np.hstack((result, tonnetz))
     return result
 
-def run_pred():
+def run_pred(filename):
 #if __name__ == "__main__":
     # load the saved model (after training)
     # model = pickle.load(open("result/mlp_classifier.model", "rb"))
+    """
     from utils import load_data, split_data, create_model
     import argparse
-    parser = argparse.ArgumentParser(description="""Gender recognition script, this will load the model you trained, 
-                                    and perform inference on a sample you provide (either using your voice or a file)""")
+    parser = argparse.ArgumentParser(description=""""""Gender recognition script, this will load the model you trained, 
+                                    and perform inference on a sample you provide (either using your voice or a file)"""""")
     parser.add_argument("-f", "--file", help="The path to the file, preferred to be in WAV format")
     args = parser.parse_args()
-    file = args.file
+    """
+    #file = args.file
+    file = filename.file
     # construct the model
     model = create_model()
     # load the saved/trained weights
