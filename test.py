@@ -1,7 +1,7 @@
-import pyaudio
+#import pyaudio
 import os
 import wave
-import librosa
+#import librosa
 import numpy as np
 from sys import byteorder
 from array import array
@@ -59,8 +59,9 @@ def add_silence(snd_data, seconds):
     r.extend(snd_data)
     r.extend([0 for i in range(int(seconds*RATE))])
     return r
-
+"""
 def record():
+    """
     """
     Record a word or words from the microphone and 
     return the data as an array of signed shorts.
@@ -68,6 +69,7 @@ def record():
     start and end, and pads with 0.5 seconds of 
     blank sound to make sure VLC et al can play 
     it without getting chopped off.
+    """
     """
     p = pyaudio.PyAudio()
     stream = p.open(format=FORMAT, channels=1, rate=RATE,
@@ -117,7 +119,7 @@ def record_to_file(path):
     wf.setframerate(RATE)
     wf.writeframes(data)
     wf.close()
-
+ """
 
 
 def extract_feature(file_name, **kwargs):
@@ -187,5 +189,6 @@ if __name__ == "__main__":
     female_prob = 1 - male_prob
     gender = "male" if male_prob > female_prob else "female"
     # show the result!
-    print("Result:", gender)
-    print(f"Probabilities:     Male: {male_prob*100:.2f}%    Female: {female_prob*100:.2f}%")
+    print(gender)
+    #print("Result:", gender)
+    #print(f"Probabilities:     Male: {male_prob*100:.2f}%    Female: {female_prob*100:.2f}%")
