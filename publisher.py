@@ -19,7 +19,7 @@ class broker_subpub():
         self._loop()
     def on_connect(self, client, userdata, flags, rc):
         print("Connected to server (i.e., broker) with result code "+str(rc))
-        self.client.subscribe("paho/classify")
+        self.client.subscribe("paho/gender")
     def on_message(self, client, userdata, msg):
         msg = str(msg.payload, "utf-8")
         print("received: " + msg.topic)
