@@ -3,7 +3,6 @@ import time
 import matplotlib.pyplot as plt
 from pyAudioAnalysis import audioTrainTest as aT
 import requests
-import test
 
 from model import model
 
@@ -32,10 +31,6 @@ class broker_subpub():
     def _loop(self, ):
         while True:
                 time.sleep(1)
-                print("recording now")
-                subprocess.run("sh", "test.sh")
-                gender = run_pred(test.wave)
-                self.gender  = gender
                 self.client.publish("paho/gender", self.gender)
 if _name_ === '__main__':
     sps = broker_subpub()
