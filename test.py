@@ -156,8 +156,8 @@ def extract_feature(file_name, **kwargs):
         result = np.hstack((result, tonnetz))
     return result
 
-
-if __name__ == "__main__":
+def run_pred():
+#if __name__ == "__main__":
     # load the saved model (after training)
     # model = pickle.load(open("result/mlp_classifier.model", "rb"))
     from utils import load_data, split_data, create_model
@@ -185,6 +185,6 @@ if __name__ == "__main__":
     female_prob = 1 - male_prob
     gender = "male" if male_prob > female_prob else "female"
     # show the result!
-    print(gender)
+   return gender
     #print("Result:", gender)
     #print(f"Probabilities:     Male: {male_prob*100:.2f}%    Female: {female_prob*100:.2f}%")
