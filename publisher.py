@@ -3,6 +3,7 @@ import time
 import matplotlib.pyplot as plt
 from pyAudioAnalysis import audioTrainTest as aT
 import requests
+import test
 
 from model import model
 
@@ -23,15 +24,18 @@ class broker_subpub():
         msg = str(msg.payload, "utf-8")
         print("received: " + msg.topic)
         if self.gender == "male":
-            print()
+            print("male")
         elif self.gender == "female":
-            print()
+            print("female")
         else:
             return
     def _loop(self, ):
         while True:
                 time.sleep(1)
-                self.gender  = input("Choose gender (male/female): ")
+                print("recording now")
+                subprocess.run("sh", "test.sh")
+                gender = run_pred(test.wave)
+                self.gender  = gender
                 self.client.publish("paho/gender", self.gender)
 if _name_ === '__main__':
     sps = broker_subpub()
