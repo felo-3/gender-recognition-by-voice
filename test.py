@@ -59,19 +59,16 @@ def add_silence(snd_data, seconds):
     r.extend(snd_data)
     r.extend([0 for i in range(int(seconds*RATE))])
     return r
-"""
-
+    
 def record():
-    """
-    """
+
     Record a word or words from the microphone and 
     return the data as an array of signed shorts.
     Normalizes the audio, trims silence from the 
     start and end, and pads with 0.5 seconds of 
     blank sound to make sure VLC et al can play 
     it without getting chopped off.
-    """
-    """
+
     p = pyaudio.PyAudio()
     stream = p.open(format=FORMAT, channels=1, rate=RATE,
         input=True, output=True,
@@ -108,7 +105,6 @@ def record():
     r = trim(r)
     r = add_silence(r, 0.5)
     return sample_width, r
-"""
 def record_to_file(path):
     "Records from the microphone and outputs the resulting data to 'path'"
     sample_width, data = record()
@@ -120,11 +116,10 @@ def record_to_file(path):
     wf.setframerate(RATE)
     wf.writeframes(data)
     wf.close()
- """
 
-def extract_feature(file_name, **kwargs):
-  
 """
+def extract_feature(file_name, **kwargs):
+  """
     Extract feature from audio file `file_name`
         Features supported:
             - MFCC (mfcc)
