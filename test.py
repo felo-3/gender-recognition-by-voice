@@ -7,7 +7,7 @@ from sys import byteorder
 from array import array
 from struct import pack
 
-
+"""
 THRESHOLD = 500
 CHUNK_SIZE = 1024
 FORMAT = pyaudio.paInt16
@@ -60,6 +60,7 @@ def add_silence(snd_data, seconds):
     r.extend([0 for i in range(int(seconds*RATE))])
     return r
 """
+
 def record():
     """
     """
@@ -107,7 +108,7 @@ def record():
     r = trim(r)
     r = add_silence(r, 0.5)
     return sample_width, r
-
+"""
 def record_to_file(path):
     "Records from the microphone and outputs the resulting data to 'path'"
     sample_width, data = record()
@@ -121,7 +122,7 @@ def record_to_file(path):
     wf.close()
  """
 
-
+"""
 def extract_feature(file_name, **kwargs):
     """
     Extract feature from audio file `file_name`
@@ -159,7 +160,7 @@ def extract_feature(file_name, **kwargs):
         tonnetz = np.mean(librosa.feature.tonnetz(y=librosa.effects.harmonic(X), sr=sample_rate).T,axis=0)
         result = np.hstack((result, tonnetz))
     return result
-
+"""
 
 if __name__ == "__main__":
     # load the saved model (after training)
