@@ -122,9 +122,9 @@ def record_to_file(path):
     wf.close()
  """
 
-"""
 def extract_feature(file_name, **kwargs):
-    """
+  
+"""
     Extract feature from audio file `file_name`
         Features supported:
             - MFCC (mfcc)
@@ -134,7 +134,7 @@ def extract_feature(file_name, **kwargs):
             - Tonnetz (tonnetz)
         e.g:
         `features = extract_feature(path, mel=True, mfcc=True)`
-    """
+"""
     mfcc = kwargs.get("mfcc")
     chroma = kwargs.get("chroma")
     mel = kwargs.get("mel")
@@ -160,7 +160,7 @@ def extract_feature(file_name, **kwargs):
         tonnetz = np.mean(librosa.feature.tonnetz(y=librosa.effects.harmonic(X), sr=sample_rate).T,axis=0)
         result = np.hstack((result, tonnetz))
     return result
-"""
+
 
 if __name__ == "__main__":
     # load the saved model (after training)
