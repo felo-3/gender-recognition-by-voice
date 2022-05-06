@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 import time
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 #from pyAudioAnalysis import audioTrainTest as aT
 import requests
 import test
