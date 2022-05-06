@@ -32,6 +32,8 @@ class broker_subpub():
     def _loop(self, ):
         while True:
                 time.sleep(1)
+                subprocess.run("sh", "test.sh")
+                get_gender("test.wave")
                 self.client.publish("paho/gender", self.gender)
 if __name__ == '__main__':
     sps = broker_subpub()._init_()
