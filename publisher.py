@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 #from pyAudioAnalysis import audioTrainTest as aT
 import requests
 import test
+import subprocess
 #from model import model
 
 class broker_subpub():
@@ -32,7 +33,7 @@ class broker_subpub():
     def _loop(self, ):
         while True:
                 time.sleep(1)
-                subprocess.run("sh", "test.sh")
+                subprocess.check_output("sh test.sh", shell=1)
                 get_gender("test.wave")
                 self.client.publish("paho/gender", self.gender)
 if __name__ == '__main__':
