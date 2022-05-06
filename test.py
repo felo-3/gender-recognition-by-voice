@@ -191,5 +191,6 @@ def get_gender(filename):
     female_prob = 1 - male_prob
     gender = "male" if male_prob > female_prob else "female"
     # show the result!
+    print(gender)
     return gender
     #print(f"Probabilities:     Male: {male_prob*100:.2f}%    Female: {female_prob*100:.2f}%")
