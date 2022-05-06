@@ -169,7 +169,7 @@ def get_gender(filename):
     args = parser.parse_args()
     #file = args.file
     """
-    file = filename.file
+    file = filename
     # construct the model
     model = create_model()
     # load the saved/trained weights
