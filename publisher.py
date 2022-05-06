@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 #from pyAudioAnalysis import audioTrainTest as aT
 import requests
 
-from model import model
+#from model import model
 
 class broker_subpub():
     def _init_(self):
@@ -14,7 +14,7 @@ class broker_subpub():
         self.client.on_connect = self.on_connect
         self.client.connect("eclipse.usc.edu", 11000, 60)
         self.client.loop_start()
-        self.model = Model()
+        #self.model = Model()
         self._loop()
     def on_connect(self, client, userdata, flags, rc):
         print("Connected to server (i.e., broker) with result code "+str(rc))
