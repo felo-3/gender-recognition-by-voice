@@ -16,6 +16,7 @@ class broker_subpub():
         self.client.loop_start()
         #self.model = Model()
         self._loop()
+        print("initialized")
     def on_connect(self, client, userdata, flags, rc):
         print("Connected to server (i.e., broker) with result code "+str(rc))
         self.client.subscribe("paho/gender")
