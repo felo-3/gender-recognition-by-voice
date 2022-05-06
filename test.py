@@ -1,7 +1,7 @@
 #import pyaudio
 import os
 import wave
-#import librosa
+import librosa
 import numpy as np
 from sys import byteorder
 from array import array
