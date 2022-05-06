@@ -22,7 +22,7 @@ class broker_subpub():
         self.client.subscribe("paho/gender")
     def on_message(self, client, userdata, msg):
         msg = str(msg.payload, "utf-8")
-        print("received: " + msg.payload)
+        print("received: " + msg)
         if self.gender == "male":
             print("male")
         elif self.gender == "female":
