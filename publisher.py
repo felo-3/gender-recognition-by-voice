@@ -12,7 +12,7 @@ class broker_subpub():
         self.client = mqtt.Client()
         self.client.on_message = self.on_message
         self.client.on_connect = self.on_connect
-        self.client.connect("test.mosquitto.org", 11000, 60)
+        self.client.connect("test.mosquitto.org", 1883, 60)
         self.client.loop_start()
         #self.model = Model()
         self._loop()
