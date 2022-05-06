@@ -159,7 +159,7 @@ def extract_feature(file_name, **kwargs):
 def get_gender(filename):
 #if __name__ == "__main__":
     # load the saved model (after training)
-    model = pickle.load(open("result/mlp_classifier.model", "rb"))
+    #model = pickle.load(open("result/mlp_classifier.model", "rb"))
     
     from utils import load_data, split_data, create_model
     """
