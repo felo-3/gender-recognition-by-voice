@@ -178,7 +178,7 @@ def get_gender(filename):
         # if file not provided, or it doesn't exist, use your voice
         print("Please talk")
         # put the file name here
-        file = "test.wav"
+        file = "test-mic.wav"
         # record the file (start talking)
         record_to_file(file)
     # extract features and reshape it
