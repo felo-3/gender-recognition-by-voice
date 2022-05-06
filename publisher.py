@@ -35,4 +35,4 @@ class broker_subpub():
                 self.client.publish("paho/gender", self.gender)
 if __name__ == '__main__':
     sps = broker_subpub()
-    sps.loop_start()
+    sps._loop()
