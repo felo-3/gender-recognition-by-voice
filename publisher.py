@@ -1,6 +1,5 @@
 import paho.mqtt.client as mqtt
 import time
-#import matplotlib.pyplot as plt
 import requests
 import test
 import subprocess
