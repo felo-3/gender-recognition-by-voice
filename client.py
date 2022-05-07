@@ -1,17 +1,4 @@
-#
-
-# paho.mqtt.client - This code provides a client class which enable applications to connect to an MQTT broker
-#                    to publish messages, and to subscribe to topics and receive published messages. It also provides
-#                    some helper functions to make publishing one off messages to an MQTT server very straightforward.
-
-# sys -              The sys module in Python provides various functions and variables that are used to manipulate 
-#                    different parts of the Python runtime environment. It allows operating on the interpreter as it 
-#                    provides access to the variables and functions that interact strongly with the interpreter.
-
-# grovepi -          GrovePi is an open source platform for connecting Grove Sensors to the Raspberry Pi.
-
-#
-
+                                
 import paho.mqtt.client as mqtt
 import time
 import requests
@@ -22,42 +9,43 @@ from grovepi import *
 sys.path.append('../../Software/Python/')
 import grovepi
 
-led = 4
+ledred = 4
+ledblue = 3
+grovepi.pinMode(ledred,"OUTPUT")
+grovepi.pinMode(ledblue,"OUTPUT")
 
-grovepi.pinMode(led,"OUTPUT")
+def custom_callback(client, userdata, message):
+    print("Gender of Person: " +  str(message.payload, "utf-8"))
 
-class device_subpub():
-
-    def __init__(self):
-        self.update = False
-        self.gender = None
-        self.client = mqtt.Client()
-        self.client.on_message = on_message
-        self.client.on_connect = on_connect
-        self.client.connect("test.mosquitto.org", 1883, 60)
-    
-    def on_connect(self, client, userdata, flags, rc):
-        print("Connected to server (i.e., broker) with result code "+str(rc))
-        self.client.subscribe("paho/gender")
-        self.client.message_callback_add("paho/gender", custom_callback)
-
-    def on_message(self, client, userdata, msg):
-        self.gender = str(msg.payload, "utf-8")
-        print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
-        self.update = True
-
-    def custom_callback(self, client, userdata, message):
-        print(str(msg.payload, "utf-8"))
+    if(str(message.payload, "utf-8") == "male"):
+        grovepi.digitalWrite(ledred,1)
+        time.sleep(1)
+        time.sleep(1)
+        grovepi.digitalWrite(ledred,0)
+    elif(str(message.payload, "utf-8") == "female"):
+        grovepi.digitalWrite(ledblue,1)
+        time.sleep(1)
+        time.sleep(1)
+        grovepi.digitalWrite(ledblue,0)   
         
-        if(str(msg.payload, "utf-8") == "male"):
-            grovepi.digitalWrite(LED,1)
-        elif(str(msg.payload, "utf-8") == "female"):
-            grovepi.digitalWrite(LED,0)
+def on_connect(client, userdata, flags, rc):
+    print("Connected to server (i.e., broker) with result code "+str(rc))
+    client.subscribe("paho/gender")
+    client.message_callback_add("paho/gender", custom_callback)
 
-    def loop_forever(self):
-        self.client.loop_forever()
-            
+def on_message(client, userdata, msg):
+    gender = str(msg.payload, "utf-8")
+    print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
+    update = True
+
+def loop_forever():
+    client.loop_forever()
+          
 if __name__ == '__main__':
-    dps = device_subpub()
-    dps.loop_forever()
-                
+    update = False
+    gender = None
+    client = mqtt.Client()
+    client.on_message = on_message
+    client.on_connect = on_connect
+    client.connect("test.mosquitto.org", 1883, 60)
+    client.loop_forever()           
